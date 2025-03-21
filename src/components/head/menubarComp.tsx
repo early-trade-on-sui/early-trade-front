@@ -27,23 +27,20 @@ export function MenubarComp() {
         anchorEl={anchorEl}
         open={open}
         onClose={handleClose}
-        MenuListProps={{
-          "aria-labelledby": "basic-button",
-        }}
       >
         <MenuItem
           onClick={handleClose}
-          className="flex w-full items-center gap-2"
+          className=" max-w-[200px] items-center gap-2"
         >
           <ChartCandlestick size={20} />
           <span>Pre-Market</span>
         </MenuItem>
         <MenuItem
           onClick={handleClose}
-          className="flex w-full items-center gap-2"
+          className=" max-w-[200px] items-center gap-2"
         >
           <WalletMinimal size={20} />
-          <span>Dashboard</span>
+          <span>Order</span>
         </MenuItem>
       </Menu>
     </div>

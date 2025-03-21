@@ -7,6 +7,7 @@ export default function Detail() {
   const coinListProps: CoinListProps = {
     availableCoins: [
       {
+        id: 1,
         symbol: "BTC",
         name: "Bitcoin",
         fullName: "Bitcoin",
@@ -16,6 +17,7 @@ export default function Detail() {
         icon: "/btc.png",
       },
       {
+        id: 2,
         symbol: "ETH",
         name: "Ethereum",
         fullName: "Ethereum",
@@ -27,6 +29,7 @@ export default function Detail() {
     ],
     pastCoins: [
       {
+        id: 3,
         symbol: "DOGE",
         name: "Dogecoin",
         fullName: "Dogecoin",

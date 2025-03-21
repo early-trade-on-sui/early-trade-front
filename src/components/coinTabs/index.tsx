@@ -3,11 +3,12 @@
 import { Box, Tab, Tabs as MTabs } from "@mui/material";
 import { useState } from "react";
 import { X } from "lucide-react";
-import { Separator } from "../ui/separator";
+// import { Separator } from "../ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { BuyTable } from "../buyTable";
 import { SellTable } from "../sellTable";
 import { MarketsTable } from "../marketsTable";
+import { CoinInfoValue } from "../coinInfoValue";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -31,11 +32,23 @@ function CustomTabPanel(props: TabPanelProps) {
   );
 }
 
-export function CoinTabs() {
+export function CoinTabs({
+  setIndex,
+  setTabTwoIndex,
+}: {
+  setIndex: (index: number) => void;
+  setTabTwoIndex: (index: number) => void;
+}) {
   const [value, setValue] = useState(0);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
+    setIndex(newValue);
+    setTabTwoIndex(newValue);
+  };
+
+  const handleTabTwoIndexChange = (index: number) => {
+    setTabTwoIndex(index);
   };
 
   return (
@@ -60,28 +73,25 @@ export function CoinTabs() {
       </Box>
 
       <CustomTabPanel value={value} index={0}>
-        <div className="space-y-4">
-          <div className="flex justify-between items-center">
-            <span className="text-gray-600">24h total(USDC)</span>
-            <span className="font-medium">238.77K</span>
-          </div>
-
-          <div className="flex justify-between items-center">
-            <span className="text-gray-600">Total Vol(USDC)</span>
-            <span className="font-medium">1.05M</span>
-          </div>
-
-          <div className="flex justify-between items-center">
-            <span className="text-gray-600">Delivery time(UTC+8)</span>
-            <span className="font-medium">Pending</span>
-          </div>
-        </div>
-        <Separator className="my-2" />
+        <CoinInfoValue />
+        {/* <Separator className="my-2" /> */}
         <Tabs defaultValue="buy" className="w-[400px]">
           <TabsList>
-            <TabsTrigger value="buy">Buy</TabsTrigger>
-            <TabsTrigger value="sell">Sell</TabsTrigger>
-            <TabsTrigger value="markets">Markets</TabsTrigger>
+            <TabsTrigger value="buy" onClick={() => handleTabTwoIndexChange(0)}>
+              Buy
+            </TabsTrigger>
+            <TabsTrigger
+              value="sell"
+              onClick={() => handleTabTwoIndexChange(1)}
+            >
+              Sell
+            </TabsTrigger>
+            <TabsTrigger
+              value="markets"
+              onClick={() => handleTabTwoIndexChange(2)}
+            >
+              Markets
+            </TabsTrigger>
           </TabsList>
           <TabsContent value="buy">
             <BuyTable />
@@ -96,33 +106,8 @@ export function CoinTabs() {
       </CustomTabPanel>
 
       <CustomTabPanel value={value} index={1}>
+        <CoinInfoValue />
         <div className="space-y-6">
-          <div>
-            <div className="flex justify-between items-center mb-2">
-              <span className="text-gray-600">Total supply</span>
-              <span className="font-medium">100.00B</span>
-            </div>
-            <div className="flex justify-between items-center">
-              <span className="text-gray-600">Coin Type</span>
-              <div className="flex items-center gap-2">
-                <span className="font-medium">0x356a...4f59</span>
-                <button className="p-1 hover:bg-gray-100 rounded">
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                  >
-                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
-                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-                  </svg>
-                </button>
-              </div>
-            </div>
-          </div>
-
           <div>
             <h3 className="font-medium mb-2">Community</h3>
             <div className="flex gap-2">
