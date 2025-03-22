@@ -1,3 +1,4 @@
+"use client";
 import {
   Menu as MenuIcon,
   ChartCandlestick,
@@ -6,6 +7,7 @@ import {
 import Menu from "@mui/material/Menu";
 import { useState } from "react";
 import { MenuItem } from "@mui/material";
+import { useRouter } from "next/navigation";
 
 export function MenubarComp() {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -16,6 +18,7 @@ export function MenubarComp() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+  const router = useRouter();
 
   return (
     <div>
@@ -29,14 +32,20 @@ export function MenubarComp() {
         onClose={handleClose}
       >
         <MenuItem
-          onClick={handleClose}
+          onClick={() => {
+            handleClose();
+            router.push("/preMarket");
+          }}
           className=" max-w-[200px] items-center gap-2"
         >
           <ChartCandlestick size={20} />
           <span>Pre-Market</span>
         </MenuItem>
         <MenuItem
-          onClick={handleClose}
+          onClick={() => {
+            handleClose();
+            router.push("/order");
+          }}
           className=" max-w-[200px] items-center gap-2"
         >
           <WalletMinimal size={20} />
