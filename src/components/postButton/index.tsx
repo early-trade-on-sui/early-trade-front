@@ -12,10 +12,10 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
-import Typography from "@mui/material/Typography/Typography";
-import TextField from "@mui/material/TextField/TextField";
 import { createBuyOrder } from "@/api/buyOrder";
 import { buyOrderData } from "@/type/buyOrder";
+import Typography from "@mui/material/Typography/Typography";
+import TextField from "@mui/material/TextField/TextField";
 
 interface PostButtonProps {
   disabled?: boolean;
@@ -64,6 +64,44 @@ export default function PostButton({
               <DrawerTitle />
               <DrawerDescription></DrawerDescription>
             </DrawerHeader>
+            {/* 
+            <div className="pb-0">
+              <div className="p-2 max-w-md mx-auto">
+                <div className="mb-2">
+                  <Typography variant="body1" className="font-medium">
+                    Price
+                  </Typography>
+                  <TextField
+                    fullWidth
+                    variant="outlined"
+                    placeholder="Highest buy price 0.2909"
+                    InputProps={{
+                      endAdornment: <Typography>USD</Typography>,
+                    }}
+                  />
+                </div>
+                <div className="mb-2">
+                  <Typography variant="body1" className="font-medium">
+                    Amount
+                  </Typography>
+                  <TextField
+                    fullWidth
+                    variant="outlined"
+                    placeholder="Enter Amount"
+                    InputProps={{
+                      endAdornment: (
+                        <Typography color="primary">WAL</Typography>
+                      ),
+                    }}
+                  />
+                </div>
+                <div className="text-gray-500 mb-2">
+                  <Typography>Balance: 12232 USDC</Typography>
+                  <Typography>Margin: 0 USDC</Typography>
+                  <Typography>Transaction Fee: 0 USDC</Typography>
+                </div>
+              </div>
+            </div> */}
             <div className="pb-0">
               <div className="p-2 max-w-md mx-auto">
                 <div className="mb-2">
@@ -101,6 +139,7 @@ export default function PostButton({
                 </div>
               </div>
             </div>
+
             <DrawerFooter className="p-2">
               {/* <DrawerClose asChild> */}
               <Button

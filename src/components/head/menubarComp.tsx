@@ -4,10 +4,9 @@ import {
   ChartCandlestick,
   WalletMinimal,
 } from "lucide-react";
-import Menu from "@mui/material/Menu";
 import { useState } from "react";
-import { MenuItem } from "@mui/material";
 import { useRouter } from "next/navigation";
+import { Menu, MenuItem } from "@mui/material";
 
 export function MenubarComp() {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -25,18 +24,26 @@ export function MenubarComp() {
       <button onClick={handleClick} className="p-2" aria-label="Menu">
         <MenuIcon size={24} />
       </button>
+
       <Menu
         id="basic-menu"
         anchorEl={anchorEl}
         open={open}
         onClose={handleClose}
+        sx={{
+          "& .MuiPaper-root": {
+            // 修改 Menu 的根Paper组件样式
+            width: "100%", // 设置宽度为100%
+            maxWidth: "100vw", // 最大宽度为视窗宽度
+            left: "0 !important", // 确保左对齐
+          },
+        }}
       >
         <MenuItem
           onClick={() => {
             handleClose();
             router.push("/preMarket");
           }}
-          className=" max-w-[200px] items-center gap-2"
         >
           <ChartCandlestick size={20} />
           <span>Pre-Market</span>
@@ -46,7 +53,7 @@ export function MenubarComp() {
             handleClose();
             router.push("/order");
           }}
-          className=" max-w-[200px] items-center gap-2"
+          className="items-center gap-2"
         >
           <WalletMinimal size={20} />
           <span>Order</span>

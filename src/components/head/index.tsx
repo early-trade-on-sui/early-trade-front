@@ -7,7 +7,7 @@ import { MenubarComp } from "./menubarComp";
 export function HeadComp() {
   return (
     <>
-      <div className="w-full p-5 h-16 flex items-center justify-between bg-white">
+      <div className="w-full p-5 h-16 flex items-center justify-between bg-white border-b border-gray-200">
         <div className="w-full">
           <Logo />
         </div>
