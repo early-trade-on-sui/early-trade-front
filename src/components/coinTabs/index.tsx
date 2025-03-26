@@ -5,10 +5,10 @@ import { useState } from "react";
 import { X } from "lucide-react";
 // import { Separator } from "../ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { BuyTable } from "../buyTable";
-import { SellTable } from "../sellTable";
 import { MarketsTable } from "../marketsTable";
 import { CoinInfoValue } from "../coinInfoValue";
+import { BuyTable } from "./buyTable";
+import { SellTable } from "./sellTable";
 
 interface TabPanelProps {
   children?: React.ReactNode;
